@@ -1,0 +1,518 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+    color-scheme: dark; 
+    --color-ink: #080b10; /* Hitam pekat dan sedikit nuansa emas */
+    --color-ink-2: #0d1a2a; /* Warna biru gelap sedikit hitam */
+    --color-white: #f7fbff; /* Putih kebiruan yang sangat terang */
+    --color-sky: #a9e5ff; /* Biru muda cerah */
+    --color-blue: #3196e8; /* Biru muda yang sangat cerah */
+    --color-panel: rgba(16, 25, 38, 0.7); /* Biru tua gelap */
+    --color-border: rgba(169, 229, 255, 0.18); /* Biru muda */
+    --font-display: 'Manrope', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+}
+
+* {
+    box-sizing: border-box; /* Memasukkan nilai padding ke border */
+    margin: 0; /* Menambah ruang kosong di luar border */
+    padding: 0; /* Ruang kosong di antara elemen */
+}
+
+html {
+    scroll-behavior: smooth; /* Animasi scroll smooth */
+}
+
+body {
+    min-width: 320px; /* Mengatur batas lebar suatu elemen */
+    min-height: 100vh; /* Mengatur batas tinggi suatu elemen */
+    overflow-x: hidden; /* Mengontrol tampilan konten ketika ukuran isi kiri ke kanan */
+    background: var(--color-ink); /* Mengatur warna latar belakang */
+    color: var(--color-white); /* Warna font */
+    font-family: var(--font-display); /* Tipe font di area body */
+}
+
+a {
+    color: inherit; /* Memaksa warna agar sama seperti induknya */
+}
+
+header {
+    position: sticky; /* Agar posisi header tetap menggantung di atas */
+    top: 0; /* Memperbaiki posisi vertikal header */
+    z-index: 3; /*mengatur urutan tumpukan elemen*/
+    backdrop-filter: blur(8px);  /*mengatur blur  dibagian header*/
+    background: rgba(8, 11, 16, 0.45); /* mengatur warna dibackground sedikit hitam transparan*/ 
+}
+
+.navbar {
+    display: flex; /* mengatur letak agar posisi elamen flexible*/
+    justify-content: center;   /* mengatur letak agar eleman di tengah. jadi letak eleman berada diatas  tengah */
+    max-width: 1200px;  /* mengatur lebar eleman */
+    margin: 0 auto; /*agar posisi tepat di tengah-tengah*/
+    padding: 30px 32px; /*mengatur runagkosong diluar elemen*/
+}
+
+.style-navbar {
+    display: flex; /* mengatur letak agar posisi elamen flexible agar tetap horizontal*/
+    align-items: center;  /* mengatur letak agar eleman di tengah dan tetep vertikal */
+    gap: clamp(28px, 5vw, 68px); /* mengatur jarak antara Home About Contact*/
+    list-style: none; /* mangatur penanda berupa titik atau angka*/
+}
+
+.style-navbar a {
+    position: relative; /* mengatur agar posisi tetap relative */
+    color: rgba(247, 251, 255, 0.76);  /* mengatrur warna font pada navbar*/
+    font-size: 12px; /* mengatur ukuran font pada navbar yang memiliki nilai 12px*/
+    font-weight: 600;   /* mengatur ukuran teks home yang memiliki nilai 2.2em*/
+    letter-spacing: 0.16em; /* mengatur jarak antara huruf dan angka di navbar yang memiliki nilai 0.16em*/
+    text-decoration: none; /* menambahkan decoration pada elemen navbar , nilai none berati tidak di tambahkan decoration*/
+    text-transform: uppercase; /* mengatur besarnya huruf pada eleman navbar , nilai uppercase berfungsi agar elemen menjadi kapital dan sedikit besar*/
+    transition: color 180ms ease; /*membuat perubahan warna teks menjadi halus atau bergerak secara bertahap, bukan berubah secara instan*/
+}
+
+.style-navbar a::after {
+    content: '';                      /* Membuat konten kosong agar pseudo-element dirender browser */
+    position: absolute;               /* Mengatur posisi elemen secara absulute */
+    right: 0;                         /* Menentukan jarak batas kanan elemen */
+    bottom: -8px;                     /* Menggeser posisi garis ke bawah sejauh 8 piksel dari teks */
+    left: 0;                          /* Menentukan jarak batas kiri elemen */
+    height: 1px;                      /* Menentukan tinggi atau ketebalan garis (1 piksel) */
+    background: var(--color-sky);     /* Menentukan warna latar belakang garis dari variabel CSS */
+    transform: scaleX(0);             /* Menyembunyikan garis dengan mengecilkan skala horizontal ke 0 */
+    transform-origin: left;           /* Menentukan titik tumpu animasi dari sisi kiri */
+    transition: transform 180ms ease; /* Mengatur durasi (180ms) dan gaya kelancaran animasi transisi */
+}
+
+.style-navbar a:hover,
+.style-navbar a:focus-visible { /* Hanya memunculkan garis fokus jika pengguna menavigasi lewat keyboard */
+    color: var(--color-white);    /* mengatur warna font di navbar*/
+}
+
+.style-navbar a:hover::after,/* Efek ini aktif ketika kursor mouse diarahkan ke atas tautan navigasi.*/
+.style-navbar a:focus-visible::after { /*efek ini aktif ketika tautan dipilih menggunakan keyboard (misalnya menekan tombol Tab).*/
+    transform: scaleX(1); /*    Mengubah skala horizontal elemen ::after dari yang sebelumnya 0 (lebar nol / tersembunyi) menjadi 1 (lebar penuh / 100%).Hasil Akhir Secara Visual*/
+    
+}
+
+.home {
+    background: linear-gradient(190deg, #080b12 0%, #080b12 34%, #17324a 60%, #b9e5ff 100%); /* mengatur campuran warna  190deg rasio warna terdiri hitam kebiruan 0%  hitam kebiruan 34% biru sangat gelap 60% warna biru muda yang sangat cerah dan lembut 100% */
+    min-height: 80vh; /* mengatur batas tinggi suatu elemen memiliki nilai 80vh */
+    min-width: 320px;    /* mengatur batas lebar suatu elemen  yang miliki nilai 320px */
+}
+
+.home-content {
+    max-width: 1000px; /* mengatur lebar  max elemen/content */
+    margin: 0 auto; /* mengatur letak elemen. nilai 0 berfungsi agar letak di atas sebelah kiri, auto memindahkan letak agar berada di tengah jadi saat menambahkan elemen ini berada di atas sedikit ke kiri */
+    padding: 130px 32px 80px; /* mengatur ruang koson diluar elemen. 130px mengeser elemen sedikit ke kanan bawah, 32px sedikit ke kiri. 80px agar posisi tetap*/
+    display: flex; /* mengatur agar felxible. ingat saat menambahkan nilai ini posisi elemen menjadi horizontal harus di tambahkan column*/
+    flex-direction: column; /* berfungsi menyusun elemen ke bawah / vertikal*/
+    text-align: left; /* mengatur agar teks menjadi rata kiri */
+    font-size: 2.2em; /* mengatur ukuran teks home yang memiliki nilai 2.2em*/
+    animation: pulse 0.7s ease-out forwards; /* mengatur animasi 0.7s durasi waktu. ease-out Mengatur akselerasi kecepatan animasi, forward status elemen setelah animasi selesai*/
+}
+
+@keyframes pulse {
+   from {
+    opacity: 0; /* mengatur tansparasi suatu elemen yan memiliki nilai 0 */
+    transform: translate(-60px); /* untuk mengseser posisi sebuah elemen secara vertikal menuju */
+   }
+   to {
+    opacity: 1; /* mengatur tansparasi suatu elemen yan memiliki nilai 1*/
+    transform: translateY(0);  /* untuk mengembalikan posisi sebuah elemen secara vertikal (tegak lurus) ke posisi aslinya */
+   }
+}
+
+.eyebrow {
+    font-size: 0.58em;  /* mengatur ukuran teks home yang memiliki nilai 0.58em*/
+    font-weight: 600;  /* mengatur ukuran teks home yang memiliki nilai 600*/
+    font-family: var(--font-mono); /* Tipe font di area eyebrow */
+    letter-spacing: 0.16em; /* mengatur jarak antara huruf dan angka di navbar yang memiliki nilai 0.16em*/
+    text-transform: uppercase; /* mengatur besarnya huruf pada eleman navbar , nilai uppercase berfungsi agar elemen menjadi kapital dan sedikit besar*/
+    color: var(--color-sky);  /* mengatrur warna font pada eyebrow*/
+}
+
+h1 {
+    font-size: 2.5em; /* mengatur ukuran teks home yang memiliki nilai 2.5em*/
+    font-weight: 800; /* mengatur ukuran teks home yang memiliki nilai 800*/
+    line-height: 0.90; /* mengatur agar jarak verikal antara SOFTWHARE ENGINEER */
+    letter-spacing: -0.04em; /* digunakan untuk memperapat jarak antar-huruf*/
+    color: var(--color-white); /* mengatrur warna font pada eyebrow*/
+    margin-top:18px;   /*digunakan untuk memberikan jarak vertikal di luar elemen sebesar 18 piksel dari elemen yang berada tepat di atasnya.*/
+}
+
+h1 span {
+    display: inline-block; /*Mengubah perilaku elemen agar memiliki sifat gabungan antara inline dan block.*/
+    color: var(--color-sky);  /* mengatrur warna font pada span*/
+    margin-top: 18px; /*digunakan untuk memberikan jarak vertikal di luar elemen sebesar 18 piksel dari elemen yang berada tepat di atasnya.*/
+}
+
+.intro-text {
+    max-width: 760px; /* mengatur lebar max elemen/content */
+    margin-top: 22px;  /*digunakan untuk memberikan jarak vertikal di luar elemen sebesar 18 piksel dari elemen yang berada tepat di atasnya.*/
+    font-size: 1.03rem; /*mengatur ukuran teks pada p yang memiliki nilai 1.03rem*/
+    line-height: 1.6; /* mengatur agar jarak verikal antar teks*/
+    font-family: var(--font-display);  /* Tipe font di area p */
+    color: rgba(247, 251, 255, 0.8); /* mengatur warna font*/
+}
+
+.proyek-card {
+    display: flex;   /* mengatur letak agar posisi elamen flexible agar tetap horizontal*/
+    align-items: center;  /* mengatur letak agar eleman di tengah dan tetep vertikal */
+   padding: 30px 0;   /* mengatur letak elemen. 30px  brfungsi untuk mengeser elemen ke bawah , 0 berfungsi agar elemen tetap di kiri */
+}
+
+.button {
+    display: inline-flex; /* membuat elemen menjadi kontainer Flexbox secara internal, tetapi memperlakukan elemen itu sendiri sebagai elemen sebaris (inline) secara eksternal*/
+    align-items: center; /* mengatur letak agar eleman di tengah dan tetep vertikal */
+    justify-content: center;  /* mengatur letak agar eleman di tengah. jadi letak eleman berada diatas  tengah */
+    gap: 8px; /* mengatur jarak antar View Projects dan →*/
+    padding: 16px 19px;  /* mengatur ruang kosong diluar elemen.  16px 19px mengatur agar kontainer sama seperti ukuran font*/
+    border-radius: 22px; /* membuat lekuken di setiap sisi */
+    font-size: 17px; /*mengatur ukuran teks pada p yang memiliki nilai 17px*/
+    font-weight: 600; /* mengatur ukuran teks home yang memiliki nilai 600*/
+    text-decoration: none; /* menambahkan decoration pada elemen navbar , nilai none berati tidak di tambahkan decoration*/
+    transition: transform 0.2s ease, background 0.2s ease; /* membuat perubahan tampilan pada elemen menjadi halus (tidak patah-patah) dalam waktu 0,2 detik saat terjadi perubahan status*/
+}
+
+.button:hover {
+    transform: translateY(-2px); /*mengatur agar  saat box disentuh bergerak */
+}
+
+.button-primary {
+    background: var(--color-blue); /* warna pertama di box saat tidak disentuh */
+    color: var(--color-white);  /* mengatur warna font pada box*/
+}
+
+.button-primary:hover {
+    background: #0056b3;   /* warna kedua saat disentuh */
+}
+
+.button-primary span {
+    font-size: 17px;  /* ukuran elemen "→"*/
+}
+
+/* About Page */
+.about {
+    background: var(--color-ink); /* mengatur warna pada halaman about  Warna biru gelap sedikit hitam */
+}
+
+.about-layout {
+    display: grid;  /* Mengubah elemen menjadi kontainer grid dua dimensi.*/
+    grid-template-columns: 1.5fr 1fr; /*: Membagi kontainer menjadi 2 kolom. Kolom pertama mengambil porsi 1,5 bagian dari sisa ruang (60%), dan kolom kedua mengambil 1 bagian (40%).*/
+    gap: 32px; /* mengatur jarak antar Elemen*/
+    align-items: center; /* mengatur letak agar eleman di tengah dan tetep vertikal */
+}
+
+.about-content {
+    max-width: 600px;  /* mengatur lebar max elemen/content */
+    min-height: auto;  /* mengatur batas tinggi suatu elemen/content */
+    font-size: 2.2rem;  /*mengatur ukuran teks pada about-content*/
+    animation: about-animation 1.5s linear;  /*mengatur 1.5s mengatur durasi , linear mengatur tempo agar sama seprti durasi*/
+    animation-timeline: scroll();  /*mengatur tipe animasi*/
+    animation-range: entry 0% cover 40%;   /*mengatur  mulainya animasi dan selesinya animasi */
+}
+
+@keyframes about-animation {
+   from {
+    opacity: 0; /* mengatur tansparasi suatu elemen */
+    transform: translateY(-50px); /* untuk mengseser posisi sebuah elemen kebawah menuju */
+   }
+   to {
+    opacity: 1;  /* mengatur tansparasi suatu elemen */
+    transform: translateY(0);  /* titik dimana animasi berhenti*/
+   }
+}
+
+h2 {
+    font-size: 3rem;  /*mengatur ukuran teks pada  h2 */
+    font-weight: 800; /* mengatur ukuran teks home yang memiliki nilai 800*/
+    line-height: 1.1; /* mengatur agar jarak verikal antar teks*/
+    letter-spacing: -0.04em; /* digunakan untuk memperapat jarak antar-huruf*/
+    color: var(--color-white);   /* mengatur warna font pada h2*/
+    margin-top: 18px;  /*digunakan untuk memberikan jarak vertikal di luar elemen sebesar 18 piksel dari elemen yang berada tepat di atasnya.*/
+}
+
+h2 span {
+    display: inline-block;  /* mengatur agar elemen yan di bungkus span sama dengan */
+    color: var(--color-sky);   /* mengatur warna font pada h2 span */
+    margin-top: 8px; /*digunakan untuk memberikan jarak vertikal di luar elemen sebesar 18 piksel dari elemen yang berada tepat di atasnya.*/
+}
+
+.section-shell {
+    max-width: 1200px;  /* batas maksimal lebar suatu elemen */
+    margin: 0 auto; /* menagatur agar content berada di tengah*/
+    padding: 100px 32px 0; /* untuk mengatur jarak dan lebar 100px mengatur ruang kosong di luar elemen , 32px untuk mengatur panjang content, 0*/
+}
+
+.header-container {
+  display: flex; /* mengatur agar posisi flexible */
+  justify-content: flex-end; /*mengatur agar posisi  berada disebelah kiri*/
+  align-items: center; /*mengatur agar posisi di tengah*/
+  gap: 2rem; /* mengatur jarak antar elemen */
+  animation: scroll-pp linear;
+  animation-timeline: scroll();
+ animation-range:  entry 0% cover 40%;
+}
+
+.profile-img {
+  width: 250px; /*mengatur lebar nsuatu contect */
+  height: 250px; /*mengatur tinggi suatu contect agar sama*/
+  border-radius: 50%; /*mengatur lekukan di setiap sisi gar seperti lingkaran */
+  object-fit: cover; /* agar fokusdi satu object saja*/
+  box-shadow: 0 25px 25px rgba(4, 170, 216, 0.5); /*memberikan shadow dibawwah elemnen */
+  position: relative; /* membuat poissi elemen menjadi relative */
+}
+
+@keyframes scroll-pp {
+   from {
+     opacity: 0;   /*mengatur tingkat tarnsparasi  */
+    transform: translateY(-50px);  /* Mulai dari bawah sedikit lalu naik ke posisi normal */
+   }
+   to { 
+    opacity: 1;  /*mengatur tingkat tarnsparasi  */
+    transform: translateY(0);
+   }
+}
+
+.about-grid {
+    display: grid; /*  Mengubah elemen pembungkus (container) menjadi sistem tata letak 2 dimensi (mengatur baris dan kolom secara bersamaan)*/
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* mengatur jumlah kolom dan ukuran lebar masing-masing pada kolom grid, repeat(3 tiga kolo yan terbentuk , minmax(0, 1fr))  Fungsi ukuran batas bawah dan batas atas untuk tiap kolom*/
+    gap: 24px;  /* mengatur jarak antar elemen */
+    margin-top: 100px; /* mengatur jarak content dengan about layout*/
+}
+
+.about-cards {
+     background:  linear-gradient(180deg, rgba(17, 28, 41, 0.92), rgba(11, 18, 28, 0.9)); /*  mengtur warna di kartu yang memilki dengan nuansa biru tua yang sangat gelap */
+    border: 3px solid var(--color-border);  /*  mengtur warna di kartu yang memilki dengan nuansa biru tua yang sangat gelap */
+    border-radius: 22px; /*membuat lekukan  di setiap sisi */
+     padding: 28px 24px; /*mengatur agar "p" berada di poisi tengah dengan menekan elemen ke kanan dan kiri sebesar 24px, atas dan bawah ssebesear 28px   */
+     min-height: 180px; /* mengatur tinggi kartu about-cards  */
+    box-shadow: 0 24px 60px rgba(8, 11, 16, 0.28); /*membuat teks shedow*/
+}
+
+h3 {
+    font-size: clamp(1rem, 2vw, 2rem);    /*  mengatur ukuran h3 */
+    margin-bottom: 16px;    /* mengatur ruang kosong kebawah*/
+}
+
+.about-p {
+    font-size: 0.94rem; /*  mengatur ukuran "p"*/
+    color: aliceblue; /* warna  font "p"*/
+    font-family: var(--font-display);  /* tipe font dipakaki di"p"  */
+}
+
+.proyek {
+    width: 100%;  /* membuat lebar suatu elemen menjadi penuh (100%) sesuai dengan lebar elemen induknya */
+    max-width: 1100px; /* menetapkan lebar maksimum suatu elemen sebesar 1100 piksel.*/
+    margin: 0 auto; /* menagatur agar content berada di tengah*/
+    padding: 70px 0; /* mengtur jarak dengan elamem di atas di , 70px posisi ini poisi elemen berada di agak seblah kiri,  0 poisi ini untuk mengatur elemen ke posisi ulang*/
+}
+
+.proyek-gallery {
+    justify-content: space-between;  /* mengatur penyebaran elemen anak (item) di sepanjang sumbu utama (main-axis).*/
+     flex-wrap: wrap; /* digunakan pada kontainer Flexbox untuk mengizinkan elemen-elemen anak (flex items) turun ke baris baru jika ruang pada baris pertama sudah tidak mencukupi. */
+    margin-bottom: 70px;   /* mengatur ruang kosong kebawah*/
+    gap: 20px; /* mengatur jarak antar elemen */
+}
+
+.tag {
+    color: #8b8b8b; /*mengatur warna di class"teg" */
+    font-size: 0.8rem; /*mengatur ukuran teks pada elemen class "teg" */
+    font-weight: 500; /*mengatur ketebalan font */
+    letter-spacing: 1.5px;  /* digunakan untuk memperapat jarak antar-huruf*/
+    text-transform: uppercase;  /* mengatur besarnya huruf pada eleman  , nilai uppercase berfungsi agar elemen menjadi kapital dan sedikit besar*/
+    display: block; /*mengatur agar posisi lebar sepenuh terpakai*/
+    margin-bottom: 8px;   /* mengatur ruang kosong kebawah*/
+}
+
+.proyek-gallery h1 {
+    font-size: 42px; /*mengatur ukuran teks pada elemen class"proyek-gallery h1" */
+    font-weight: 700; /*mengatur ketebalan font */
+    color: var(--color-white); /* warna  font "proyek-gallery h1 "*/
+    margin-bottom: 6px;  /* mengatur ruang kosong kebawah*/
+}
+
+.sub-title {
+    color: #8b8b8b; /*mengatur warna di class"teg" */
+    font-size: 15px;  /*mengatur ukuran teks pada elemen */
+    padding: 8px 0;  /* mengtur jarak dengan elamem di atas di , 8px posisi ini poisi elemen berada di agak seblah kiri,  0 poisi ini untuk mengatur elemen ke posisi ulang*/
+}
+
+.carousel-container { /* Selektor untuk kontainer utama carousel */
+    position: relative; /* Menjadikan kontainer sebagai acuan posisi elemen absolut di dalamnya */
+    display: flex; /* Mengaktifkan layout Flexbox untuk mengatur elemen anak */
+    justify-content: center; /* Menyelaraskan konten secara horizontal di tengah */
+    align-items: center; /* Menyelaraskan konten secara vertikal di tengah */
+    margin: 40px 0; /* Memberikan jarak atas dan bawah sebesar 40px, kiri/kanan 0 */
+    perspective: 1000px; /* Memberikan efek kedalaman 3D pada elemen anak */
+}
+
+.carousel-track { /* Selektor untuk jalur atau wadah trek kartu carousel */
+    display: flex; /* Menggunakan Flexbox untuk tata letak trek */
+    justify-content: center; /* Menyelaraskan item di tengah secara horizontal */
+    align-items: center; /* Menyelaraskan item di tengah secara vertikal */
+    width: 100%; /* Mengatur lebar trek memenuhi kontainer (100%) */
+    height: 320px; /* Mengatur tinggi tetap trek sebesar 320px */
+    position: relative; /* Menjadikan posisi relatif sebagai acuan kartu di dalamnya */
+}
+
+.card { /* Selektor untuk setiap kartu individual dalam carousel */
+    position: absolute; /* Mengatur posisi absolut agar kartu bisa ditumpuk/diatur posisinya secara bebas */
+    width: 460px; /* Mengatur lebar kartu menjadi 460px */
+    height: 300px; /* Mengatur tinggi kartu menjadi 300px */
+    border-radius: 16px; /* Melengkungkan sudut kartu sebesar 16px */
+    overflow: hidden; /* Menyembunyikan bagian konten gambar yang keluar dari batas border-radius */
+    cursor: pointer; /* Mengubah kursor menjadi bentuk tangan (pointer) saat diarahkan ke kartu */
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease; /* Transisi halus saat properti transform dan opacity berubah */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* memberikan efek bayangan dibawah kartu*/
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Memberikan garis tepi tipis semi-transparan putih */
+}
+
+.card img { /* Selektor untuk elemen gambar di dalam kartu */
+    width: 100%; /* Lebar gambar memenuhi 100% dari kartu */
+    height: 100%; /* Tinggi gambar memenuhi 100% dari kartu */
+    object-fit: cover; /* Memastikan gambar menutupi area tanpa merusak rasio aspek (dipotong jika perlu) */
+    display: block; /* Menghilangkan spasi ekstra di bawah gambar (mengubah dari inline ke block) */
+}
+
+.card[data-offset="0"] { /* Selektor untuk kartu yang sedang aktif di posisi tengah (offset 0) */
+    transform: translateX(0) scale(1.15); /* Posisi horizontal 0 dan diperbesar (zoom) sebesar 15% */
+    z-index: 5; /* Menempatkan kartu ini di lapisan paling atas */
+    opacity: 1; /* Membuat kartu terlihat jelas sepenuhnya (tidak transparan) */
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Menebalkan garis tepi putih menjadi 2px */
+}
+
+.card[data-offset="-1"] { /* Selektor untuk kartu di sebelah kiri kartu utama (offset -1) */
+    transform: translateX(-220px) scale(0.9) rotateY(15deg); /* Digeser ke kiri 220px, diperkecil ke 90%, dan diputar sumbu Y 15 derajat */
+    z-index: 4; /* Lapisan z-index di bawah kartu utama */
+    opacity: 0.7; /* Mengatur transparansi kartu menjadi 70% */
+}
+
+.card[data-offset="1"] { /* Selektor untuk kartu di sebelah kanan kartu utama (offset 1) */
+    transform: translateX(220px) scale(0.9) rotateY(-15deg); /* Digeser ke kanan 220px, diperkecil ke 90%, dan diputar sumbu Y -15 derajat */
+    z-index: 4; /* Lapisan z-index di bawah kartu utama */
+    opacity: 0.7; /* Mengatur transparansi kartu menjadi 70% */
+}
+
+.card[data-offset="-2"] { /* Selektor untuk kartu di posisi luar kiri kedua (offset -2) */
+    transform: translateX(-380px) scale(0.75) rotateY(25deg); /* Digeser ke kiri 380px, diperkecil ke 75%, dan diputar sumbu Y 25 derajat */
+    z-index: 3; /* Lapisan z-index lebih rendah lagi */
+    opacity: 0.4; /* Mengatur transparansi kartu menjadi 40% */
+}
+
+.card[data-offset="2"] { /* Selektor untuk kartu di posisi luar kanan kedua (offset 2) */
+    transform: translateX(380px) scale(0.75) rotateY(-25deg); /* Digeser ke kanan 380px, diperkecil ke 75%, dan diputar sumbu Y -25 derajat */
+    z-index: 3; /* Lapisan z-index lebih rendah lagi */
+    opacity: 0.4; /* Mengatur transparansi kartu menjadi 40% */
+}
+
+.card[data-offset="hidden"] { /* Selektor untuk kartu yang disembunyikan dari tampilan carousel */
+    transform: translateX(0) scale(0.5); /* Posisi di tengah dengan ukuran sangat kecil (skala 50%) */
+    opacity: 0; /* Membuat kartu sepenuhnya transparan (tidak terlihat) */
+    z-index: 0; /* Lapisan z-index paling bawah */
+    pointer-events: none; /* Menonaktifkan interaksi klik pada kartu yang tersembunyi */
+}
+
+.nav-btn { /* Selektor untuk tombol navigasi (sebelumnya/berikutnya) */
+    position: absolute; /* Posisi absolut terhadap kontainer utama */
+    top: 50%; /* Menempatkan posisi atas tepat di tengah vertikal kontainer */
+    transform: translateY(-50%); /* Menyesuaikan posisi ke atas setengah dari tinggi tombol agar benar-benar di tengah */
+    background: rgba(255, 255, 255, 0.1); /* Warna latar belakang putih semi-transparan */
+    color: #fff; /* Warna teks/ikon tombol putih */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Garis tepi tipis putih transparan */
+    width: 44px; /* Lebar tombol 44px */
+    height: 44px; /* Tinggi tombol 44px */
+    border-radius: 50%; /* Membuat tombol berbentuk lingkaran sempurna */
+    font-size: 24px; /* Ukuran font/ikon di dalam tombol sebesar 24px */
+    cursor: pointer; /* Mengubah kursor menjadi bentuk tangan saat diarahkan */
+    z-index: 10; /* Menempatkan tombol di atas elemen lain (lapisan 10) */
+    transition: background 0.2s ease; /* Efek transisi halus saat latar belakang berubah */
+    display: flex; /* Mengaktifkan Flexbox untuk menengahkan ikon */
+    justify-content: center; /* Menengahkan ikon secara horizontal */
+    align-items: center; /* Menengahkan ikon secara vertikal */
+}
+
+.nav-btn:hover { /* Efek saat kursor diarahkan ke tombol navigasi */
+    background: rgba(255, 255, 255, 0.3); /* Mengubah latar belakang menjadi lebih terang/putih */
+}
+
+.prev-btn { left: -10px; /* Menempatkan tombol navigasi sebelumnya sedikit ke luar sisi kiri (-10px) */ }
+.next-btn { right: -10px; /* Menempatkan tombol navigasi berikutnya sedikit ke luar sisi kanan (-10px) */ }
+
+hr { /* Selektor untuk elemen garis horizontal (<hr>) */
+    width: 100%; /* Lebar garis memenuhi 100% kontainer */
+    border-color: #f7fbff; /* Mengatur warna garis menjadi putih kebiruan (#f7fbff) */
+}
+
+.contact {
+     width: 100%;  /* membuat lebar suatu elemen menjadi penuh (100%) sesuai dengan lebar elemen induknya */
+    max-width: 1100px; /* menetapkan lebar maksimum suatu elemen sebesar 1100 piksel.*/
+    margin: 0 auto; /* menagatur agar content berada di tengah*/
+    padding: 70px 0; /* mengtur jarak dengan elamem di atas di , 70px posisi ini poisi elemen berada di agak seblah kiri,  0 poisi ini untuk mengatur elemen ke posisi ulang*/
+}
+
+.contact-content {
+      justify-content: space-between;  /* mengatur penyebaran elemen anak (item) di sepanjang sumbu utama (main-axis).*/
+     flex-wrap: wrap; /* digunakan pada kontainer Flexbox untuk mengizinkan elemen-elemen anak (flex items) turun ke baris baru jika ruang pada baris pertama sudah tidak mencukupi. */
+    margin-bottom: 70px;   /* mengatur ruang kosong kebawah*/
+    gap: 20px; /* mengatur jarak antar elemen */
+}
+
+.contact-content h1 { 
+    font-size: 42px;   /*mengatur ukuran teks pada elemen */
+    font-weight: 600; /*mengatur ketebalan font */
+    color: var(--color-white);  /* Mengatur warna pada font "h1" */
+    margin-bottom: 7px; /* mengatur jarak antar elemen */
+}
+
+.contact-card {
+    background: linear-gradient(180deg, rgba(17, 28, 41, 0.96), rgba(10, 16, 25, 0.96)); /*  mengtur warna di kartu yang memilki dengan nuansa biru tua yang sangat gelap */
+    border: 1px solid var(--color-border);  /*  mengtur warna di kartu yang memilki dengan nuansa biru tua yang sangat gelap */
+    border-radius: 28px; /*mengatur lekukan setiap sisi nya*/
+    padding: 48px 32px; /*mengatur agar "contact-card" berada di poisi tengah dengan menekan elemen ke kanan dan kiri sebesar 32px, atas dan bawah ssebesear 48px   */
+    margin-bottom: 40px; /* mengatur jarak antar elemen */
+    text-align: center; /*mengatur elemen berada di tengah*/
+}
+
+.email-no-card {
+    display: inline-flex; /*mengtur posisi  digunakan untuk membuat sebuah kontainer menjadi Flexbox, tetapi kontainer itu sendiri berperilaku seperti elemen inline.*/
+    margin-top: 20px;  /* mengatur atas jarak antar elemen */
+    padding: 20px 100px; /*mengatur agar "contact-card" berada di poisi tengah dengan menekan elemen ke kanan dan kiri sebesar 20px, atas dan bawah ssebesear 100px   */
+    background: var(--color-sky);  /* mengatur warna di latar belakang */
+    color: var(--color-ink);  /* Mengatur warna pada font  */
+    border-radius: 999px; /*mengatur lekukan setiap sisi nya*/
+    text-decoration: none; /*menghapus decoration di teks*/
+    font-weight: 900;  /*mengatur ketebalan font */
+     transition: transform 180ms ease, box-shadow 180ms ease; /*digunakan untuk menciptakan efek animasi perubahan (transisi) yang halus pada properti transform dan box-shadow dengan durasi 180 milidetik */
+    gap: 20px;  /* mengatur jarak antar elemen */
+}
+
+.email-no-card:hover,
+.email-no-card:focus-visible {
+    transform: translateY(-2px);  /*mengatur agar  saat box disentuh bergerak  ke atas*/
+    box-shadow: 0 18px 40px rgba(169, 229, 255, 0.28);  /* memberikan efek bayangan dibawah kartu*/
+}
+
+.social-links {
+    margin-top: 28px; /* mengatur atas jarak antar elemen */
+    display: flex; /* Menggunakan Flexbox untuk tata letak trek */
+    justify-content: center;  /* mengatur letak agar eleman di tengah. jadi letak eleman berada diatas  tengah */
+    gap: 22px;  /* mengatur jarak antar elemen */
+    flex-wrap: wrap; /* digunakan pada kontainer Flexbox agar elemen-elemen anak di dalamnya otomatis turun ke baris baru jika ruang horizontal pada baris pertama sudah habis.
+Secara */
+}
+
+.social-links a {
+    color: rgba(247, 251, 255, 0.8); /* mengtur warna pada font*/
+    text-decoration: none; /*agar tidak adateks decoration*/
+    text-transform: uppercase; /* mengatur besarnya huruf pada eleman navbar , nilai uppercase berfungsi agar elemen menjadi kapital dan sedikit besar*/
+    letter-spacing: 0.12em; /* digunakan untuk memperapat jarak antar-huruf*/
+    font-size: 0.72rem;   /*mengatur ukuran teks pada elemen */
+    font-weight: 600;  /*mengatur ketebalan font */
+}
+
+.footer {
+    font-size: 1.2rem; /*mengatur ukuran teks pada elemen */
+    padding: 0 32px 48px;  /*mengatur agar fopter mengambang*/
+    text-align: center; /*mengatur elemen berada di tengah*/
+}
